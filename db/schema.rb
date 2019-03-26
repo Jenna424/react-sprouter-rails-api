@@ -10,12 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_001433) do
+ActiveRecord::Schema.define(version: 2019_03_26_002030) do
+
+  create_table "garden_plants", force: :cascade do |t|
+    t.integer "garden_id"
+    t.integer "plant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "gardens", force: :cascade do |t|
     t.string "name"
     t.string "layout", default: "Square Foot Garden with Raised Beds"
     t.string "gardenType"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.string "name"
+    t.string "family"
+    t.integer "max_quantity"
+    t.string "soil_specifications"
+    t.string "sow_season"
+    t.string "harvest_season"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
