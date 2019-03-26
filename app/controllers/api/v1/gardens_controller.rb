@@ -1,6 +1,8 @@
 module Api
   module V1
     class GardensController < ApplicationController
+      before_action :set_garden, only: [:show, :update, :destroy]
+      
       def index
         render json: Garden.all
       end
@@ -19,6 +21,10 @@ module Api
 
         def garden_params
           params.require(:garden).permit(:name, :layout, :garden_type, plant_ids: [])
+        end
+
+        def set_garden
+          @garden = Garden.find_by(id: params[:id])
         end
     end
   end
